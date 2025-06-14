@@ -124,8 +124,6 @@
 </p>
 <iframe src="https://www.youtube.com/embed/VIDEO_ID_PRACTICA2" allowfullscreen></iframe>
 
-<h2>Prácticas</h2>
-
 <h3>Práctica 3 – Billar Francés (colisiones por velocidades)</h3>
 <p>
   En esta simulación modelamos un sistema de partículas colisionantes que representan bolas de billar en una mesa sin troneras.
@@ -159,6 +157,38 @@
   El resultado es una simulación visualmente realista de un fluido que se comporta como un gel viscoso o una masa líquida compacta.
 </p>
 <iframe src="https://www.youtube.com/embed/VIDEO_ID_FLUIDO" allowfullscreen></iframe>
+
+<h3>Práctica 4 – Cubo deformable y objetos flotando sobre olas</h3>
+
+<p>
+  Esta práctica aborda dos simulaciones independientes basadas en conceptos de dinámica deformable.
+</p>
+
+<h4>Cubo deformable (masa-muelle 3D)</h4>
+<p>
+  Se construye un cubo tridimensional como una malla de partículas unidas por muelles. El sistema incluye muelles <strong>estructurales</strong> (entre vecinos directos), <strong>diagonales</strong> y <strong>internos</strong>, para mantener la forma cúbica ante deformaciones. Las partículas se ven afectadas por fuerzas como:
+  <ul>
+    <li>Gravedad</li>
+    <li>Elasticidad (Ley de Hooke)</li>
+    <li>Amortiguamiento</li>
+    <li>Colisiones contra el suelo</li>
+  </ul>
+  El cubo cae y rebota sobre una superficie, deformándose dinámicamente según la intensidad del impacto. La simulación emplea integración explícita de Euler para actualizar posiciones y velocidades. Este ejemplo es clave para comprender la extensibilidad del modelo masa-muelle a entornos tridimensionales.
+</p>
+<iframe src="https://www.youtube.com/embed/VIDEO_ID_CUBO" allowfullscreen></iframe>
+
+<h4>Simulación de objetos flotando sobre olas</h4>
+<p>
+  A partir del sistema de olas estudiado en el Tema 3, se introduce ahora la interacción con objetos físicos que <strong>flotan sobre la superficie</strong>. Para ello, cada objeto calcula su altura en la malla y la pendiente local a partir de derivadas espaciales, lo que permite:
+  <ul>
+    <li>Actualizar su posición vertical</li>
+    <li>Inclinarse según la orientación de la ola</li>
+  </ul>
+  Esta técnica permite simular con realismo el comportamiento de cuerpos sobre una superficie ondulante, como una <strong>tabla de madera</strong> o una <strong>persona tumbada</strong>. Se demuestra así cómo una malla de alturas puede usarse como base para interacciones físicas entre elementos independientes.
+</p>
+<iframe src="https://www.youtube.com/embed/VIDEO_ID_OLAS_FLOTACION" allowfullscreen></iframe>
+
+
   
   
 </body>
