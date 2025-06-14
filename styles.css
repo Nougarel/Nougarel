@@ -1,21 +1,20 @@
-/* Global container */
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  padding: 40px 20px;
+  padding: 0;
   background-color: #f9f9f9;
+  font-family: Arial, sans-serif;
   color: #333;
-  display: flex;
-  justify-content: center;
 }
 
-/* Main content area */
-body > * {
+/* Contenedor principal centrado */
+.container {
   max-width: 800px;
-  width: 100%;
+  margin: 40px auto;
+  padding: 0 20px;
+  background-color: #ffffff;
 }
 
-/* Header styles */
+/* Títulos */
 h1 {
   text-align: center;
   color: #1a1a1a;
@@ -40,13 +39,13 @@ h4 {
   font-weight: bold;
 }
 
-/* Paragraphs */
+/* Párrafos */
 p {
   line-height: 1.6;
   margin: 15px 0;
 }
 
-/* Lists */
+/* Listas */
 ul {
   margin: 10px 0 20px 20px;
   padding-left: 20px;
@@ -56,7 +55,7 @@ li {
   margin-bottom: 8px;
 }
 
-/* Iframes for YouTube videos */
+/* Videos */
 iframe {
   margin-top: 20px;
   width: 100%;
@@ -66,8 +65,12 @@ iframe {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive design */
+/* Responsive para móviles */
 @media (max-width: 600px) {
+  .container {
+    padding: 0 10px;
+  }
+
   iframe {
     height: 250px;
   }
