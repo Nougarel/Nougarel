@@ -158,38 +158,35 @@
 </p>
 <iframe src="https://www.youtube.com/embed/VIDEO_ID_FLUIDO" allowfullscreen></iframe>
 
-<h3>Práctica 4 – Cubo deformable y objetos flotando sobre olas</h3>
+<h3>Práctica 4 – Simulación de fenómenos naturales deformables</h3>
 
 <p>
-  Esta práctica aborda dos simulaciones independientes basadas en conceptos de dinámica deformable.
+  En esta última práctica abordamos la simulación avanzada de fenómenos naturales mediante dos sistemas distintos: 
+  una malla deformable tridimensional y una superficie de ondas con interacción realista.
 </p>
 
-<h4>Cubo deformable (masa-muelle 3D)</h4>
+<h4>Cubo deformable (modelo masa-muelle 3D)</h4>
 <p>
-  Se construye un cubo tridimensional como una malla de partículas unidas por muelles. El sistema incluye muelles <strong>estructurales</strong> (entre vecinos directos), <strong>diagonales</strong> y <strong>internos</strong>, para mantener la forma cúbica ante deformaciones. Las partículas se ven afectadas por fuerzas como:
-  <ul>
-    <li>Gravedad</li>
-    <li>Elasticidad (Ley de Hooke)</li>
-    <li>Amortiguamiento</li>
-    <li>Colisiones contra el suelo</li>
-  </ul>
-  El cubo cae y rebota sobre una superficie, deformándose dinámicamente según la intensidad del impacto. La simulación emplea integración explícita de Euler para actualizar posiciones y velocidades. Este ejemplo es clave para comprender la extensibilidad del modelo masa-muelle a entornos tridimensionales.
+  Esta simulación utiliza una malla 3D cúbica formada por partículas unidas entre sí mediante muelles. Cada partícula actúa como una masa puntual y cada conexión como un muelle sin masa, modelado según la ley de Hooke y amortiguamiento lineal.
+</p>
+<p>
+  El cubo reacciona dinámicamente a fuerzas externas como la gravedad o colisiones con el suelo. Gracias a su estructura, puede comprimirse, rebotar y recuperar su forma, simulando un objeto blando realista.
+  Se observa cómo varía su respuesta en función de la rigidez de los muelles, el amortiguamiento y la integración numérica utilizada (Euler simpléctico).
 </p>
 <iframe src="https://www.youtube.com/embed/VIDEO_ID_CUBO" allowfullscreen></iframe>
 
-<h4>Simulación de objetos flotando sobre olas</h4>
+<h4>Simulación de olas con objetos flotantes</h4>
 <p>
-  A partir del sistema de olas estudiado en el Tema 3, se introduce ahora la interacción con objetos físicos que <strong>flotan sobre la superficie</strong>. Para ello, cada objeto calcula su altura en la malla y la pendiente local a partir de derivadas espaciales, lo que permite:
-  <ul>
-    <li>Actualizar su posición vertical</li>
-    <li>Inclinarse según la orientación de la ola</li>
-  </ul>
-  Esta técnica permite simular con realismo el comportamiento de cuerpos sobre una superficie ondulante, como una <strong>tabla de madera</strong> o una <strong>persona tumbada</strong>. Se demuestra así cómo una malla de alturas puede usarse como base para interacciones físicas entre elementos independientes.
+  En este caso reutilizamos la superficie ondulada desarrollada en el Tema 3, basada en un mapa de alturas, y le añadimos elementos flotantes que reaccionan a la forma del agua en tiempo real.
 </p>
-<iframe src="https://www.youtube.com/embed/VIDEO_ID_OLAS_FLOTACION" allowfullscreen></iframe>
+<p>
+  Las olas se generan usando el modelo de <strong>ondas de Gerstner</strong>, que modifica tanto la altura como la posición horizontal de la malla, simulando el comportamiento real del agua. Sobre esta superficie interactúan objetos como boyas, personas o tablas que “flotan” y se orientan automáticamente según la inclinación de la superficie.
+</p>
+<p>
+  Para lograrlo, se interpola la altura local de la malla y se calcula la normal de la superficie (usando el gradiente de alturas) para posicionar correctamente cada objeto y su orientación. Esto proporciona una animación fluida y coherente visualmente.
+</p>
+<iframe src="https://www.youtube.com/embed/VIDEO_ID_OLAS_FLOTANTE" allowfullscreen></iframe>
 
-
-  
   
 </body>
 </html>
