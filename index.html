@@ -25,61 +25,56 @@
   <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
 
   <h2>Tema 3</h2>
-  <h3>Dinámica de sistemas discretos: tela, muelles y ondas</h3>
+  <h3>Simulación de Objetos Deformables: modelos masa-muelle y ondas</h3>
   <p>
-    En este tema exploramos simulaciones que utilizan modelos discretizados sobre mallas o elementos enlazados por muelles. En cada ejercicio presentamos: el planteamiento físico, las fuerzas involucradas, el esquema de integración numérica empleado y las condiciones de contorno específicas.
+    En este tema se estudian los <strong>objetos deformables</strong> como mallas de partículas conectadas por muelles, que responden a fuerzas externas e internas mediante deformaciones dinámicas. Estas simulaciones se basan en modelos lagrangianos, donde las partículas representan masas puntuales conectadas por muelles sin masa. La deformación surge del equilibrio entre fuerzas como la gravedad, el viento, los resortes y las colisiones.
   </p>
 
   <h4>Simulación de banderas (Banderas)</h4>
   <p>
-    Se modela la superficie de una bandera como una grid de partículas conectadas por muelles estructurales, de corte ("shear") y de flexión ("bend"). Cada partícula está sujeta a fuerzas:
+    Se modela la superficie de una bandera como una malla 2D de partículas unidas por muelles según tres configuraciones: estructural, shear (diagonal) y bend (flexión). Se representan las fuerzas físicas que actúan sobre cada vértice:
     <ul>
-      <li><strong>Gravedad</strong>: constante vertical.</li>
-      <li><strong>Viento</strong>: variable aleatoriamente, aplicado de acuerdo a la orientación local de la tela.</li>
-      <li><strong>Fuerzas de resorte</strong>: entre vecinos directos y, en versiones avanzadas, entre vecinos diagonales y dobles.</li>
-      <li><strong>Amortiguamiento</strong>: para evitar oscilaciones excesivas.</li>
+      <li><strong>Gravedad</strong> constante, vertical.</li>
+      <li><strong>Viento</strong> aleatorio, cuya fuerza depende del ángulo con la normal local.</li>
+      <li><strong>Muelles</strong> según Ley de Hooke: \( F = -k(d - L) \), más amortiguamiento lineal \( F = -c(v_i - v_j) \).</li>
     </ul>
-    Se utiliza un integrador explícito tipo Euler para actualizar posición y velocidad:
-    <pre><code>
-aceleración = fuerza / masa;
-velocidad += aceleración * dt;
-posición += velocidad * dt;
-    </code></pre>
-    Se muestran tres versiones: 1) solo muelles estructurales, 2) agregando corte, 3) también agregando flexión, aumentando realismo y rigidez.
+    Cada ciclo computa fuerzas, aplica la integración de Euler explícita y actualiza la posición de las partículas. Se comparan tres versiones de la malla para observar cómo las diferentes conexiones influyen en el comportamiento dinámico de la tela.
   </p>
   <iframe src="https://www.youtube.com/embed/VIDEO_ID_BANDERAS" allowfullscreen></iframe>
 
   <h4>Simulación de pelos (Muelle en cadena)</h4>
   <p>
-    Aquí cada pelo se compone de múltiples segmentos unidos por muelles, simulando un péndulo múltiple...
+    Esta simulación es una extensión del modelo masa-muelle 1D. Cada pelo está compuesto por partículas unidas secuencialmente por muelles. Se utilizan fuerzas de resorte y amortiguamiento para simular elasticidad, junto con la gravedad. El usuario puede arrastrar la punta del pelo para deformarlo e iniciar una oscilación que se propaga por toda la cadena:
+    <ul>
+      <li>Fuerza elástica proporcional a la elongación.</li>
+      <li>Amortiguamiento proporcional a la diferencia de velocidades.</li>
+      <li>Integración numérica por Euler explícito.</li>
+    </ul>
+    El resultado es un comportamiento oscilatorio suave y físicamente coherente.
   </p>
   <iframe src="https://www.youtube.com/embed/VIDEO_ID_PELOS" allowfullscreen></iframe>
 
   <h4>Simulación de olas (WaveSim)</h4>
   <p>
-    Aquí usamos tres modelos de ondas:
+    Se utiliza un mapa de alturas sobre una malla 2D para representar la superficie del agua. Se implementan tres modelos de onda:
     <ul>
-      <li><strong>Gerstner</strong>: mueve tanto la posición horizontal como la vertical...</li>
-      <li><strong>Radial</strong>: ondas circulares centradas...</li>
-      <li><strong>Direccional</strong>: ondas planas propagándose en una dirección definida...</li>
+      <li><strong>Radial</strong>: basada en la fórmula \( A \cdot \cos(k(s - vt)) \), donde s es la distancia al epicentro.</li>
+      <li><strong>Direccional</strong>: propagación plana según un vector director, \( A \cdot \sin(k \cdot r + \omega t) \).</li>
+      <li><strong>Gerstner</strong>: fórmula avanzada que desplaza también la posición horizontal de las partículas, simulando el movimiento real del agua.</li>
     </ul>
+    Se calculan las normales para una correcta iluminación. El sistema permite comparar en tiempo real las distintas formas de modelar superficies líquidas dinámicas.
   </p>
   <iframe src="https://www.youtube.com/embed/VIDEO_ID_OLAS" allowfullscreen></iframe>
 
   <h4>Simulación de malla sobre esfera (Cloth Sphere)</h4>
   <p>
-    Esta simulación representa una tela suspendida sobre una esfera, afectada por la gravedad y restringida por colisiones tanto con el plano del suelo como con la esfera. Se trata de un modelo físico de malla estructurada con resortes (muelles) entre partículas:
+    Esta simulación extiende el modelo masa-muelle 2D a un contexto tridimensional con colisiones. La malla representa una tela suspendida que cae por gravedad sobre una esfera. Las partículas están unidas por resortes estructurales, y sus movimientos se ajustan mediante:
     <ul>
-      <li><strong>Gravedad</strong>: actúa sobre todas las masas no fijas.</li>
-      <li><strong>Resortes estructurales</strong>: unen cada partícula a sus vecinos.</li>
-      <li><strong>Resolución de colisiones</strong>: evita que las partículas penetren la esfera o el suelo, reajustando su posición si lo hacen.</li>
+      <li><strong>Fuerzas internas</strong> (muelles): calculadas por Hooke y amortiguamiento.</li>
+      <li><strong>Fuerzas externas</strong>: gravedad constante en el eje y.</li>
+      <li><strong>Colisiones</strong>: contra esfera y plano del suelo, con reajuste directo de posición.</li>
     </ul>
-    La integración se hace por el método de Verlet modificado, sumando directamente aceleraciones a posiciones:
-    <pre><code>
-aceleración = fuerza / masa;
-posición += aceleración * dt²;
-    </code></pre>
-    Visualmente, se puede observar cómo la malla cae, se adapta al contorno de la esfera y reposa de forma estable. Esta simulación es una representación extendida de los modelos de tela aplicados a colisiones en 3D.
+    Se utiliza integración tipo Verlet simplificada (sin velocidad explícita), ideal para simulaciones físicas de tela. El resultado es una animación fluida y estable, que representa bien la deformabilidad de materiales como la ropa.
   </p>
   <iframe src="https://www.youtube.com/embed/VIDEO_ID_MALLA_ESFERA" allowfullscreen></iframe>
 
