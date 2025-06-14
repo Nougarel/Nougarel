@@ -75,37 +75,34 @@
 
     <h2>Prácticas</h2>
 
-  <h3>Práctica 1 - Métodos de Integración Numérica</h3>
-  <p>
-    Esta práctica tiene como objetivo principal estudiar el comportamiento de distintos integradores numéricos aplicados a un sistema físico simple. El sistema consiste en una partícula unida a cuatro muelles anclados en los vértices de un cuadrado. La partícula está sometida a tres fuerzas: la elástica de los muelles, la gravedad y la fricción con el aire.
-  </p>
-  <p>
-    A nivel teórico, se parte de las ecuaciones de Newton para calcular la aceleración de la partícula a partir de la suma de fuerzas. Esta aceleración se integra numéricamente usando uno de los siguientes métodos:
-    <ul>
-      <li><strong>Euler explícito</strong></li>
-      <li><strong>Euler simpléctico</strong></li>
-      <li><strong>Runge-Kutta de orden 2 (RK2)</strong></li>
-      <li><strong>Runge-Kutta de orden 4 (RK4)</strong></li>
-      <li><strong>Heun</strong></li>
-    </ul>
-    Cada uno de estos métodos se puede seleccionar en tiempo real y observar su efecto sobre la trayectoria, energía y estabilidad del sistema. Se ha implementado también la posibilidad de modificar el paso de simulación y registrar los datos para su posterior análisis gráfico.
-  </p>
-  <p>
-    Se espera que los integradores más avanzados como RK4 o Heun ofrezcan mayor precisión y estabilidad frente a métodos más simples como Euler. Los experimentos realizados permiten comparar estos aspectos de manera visual y cuantitativa.
-  </p>
-  <iframe src="https://www.youtube.com/embed/VIDEO_ID_PRACTICA1" allowfullscreen></iframe>
-
-
-  <h2>Prácticas</h2>
-
-<h3>Práctica 1 – Masa suspendida por muelles</h3>
+<h3>Práctica 1 – Métodos de Integración Numérica</h3>
 <p>
-  En esta primera práctica trabajamos con un sistema físico sencillo: una masa colgante conectada a cuatro muelles dispuestos en forma de cuadrado. Cada muelle ejerce una fuerza proporcional a su elongación respecto de su longitud natural, y el movimiento de la masa está sujeto a la gravedad y a la fricción del aire.
+  Esta práctica tiene como objetivo fundamental aplicar distintos métodos de integración numérica para simular un sistema físico simple: una partícula unida a cuatro muelles fijos dispuestos en los vértices de un cuadrado.
 </p>
 <p>
-  El objetivo principal fue aplicar distintos esquemas de integración numérica (Euler, Euler simpléctico, Heun, RK2, RK4) y observar su impacto en la precisión de la simulación. Además, calculamos la energía total del sistema (cinética, potencial gravitatoria y elástica) y la mostramos en pantalla para verificar la conservación energética según el integrador empleado.
+  La partícula está sometida a tres fuerzas:
+  <ul>
+    <li><strong>Fuerza elástica</strong> de los muelles (ley de Hooke), distinta para cada uno en constante y longitud de reposo.</li>
+    <li><strong>Fuerza gravitatoria</strong>, aplicada verticalmente hacia abajo.</li>
+    <li><strong>Fuerza de fricción con el aire</strong>, proporcional al cuadrado de la velocidad.</li>
+  </ul>
+</p>
+<p>
+  El sistema resuelve en cada instante las ecuaciones de Newton (\( F = ma \)) para calcular la aceleración, y a partir de ella, la velocidad y la posición. Se implementan cinco esquemas de integración numérica:
+  <ul>
+    <li>Euler explícito</li>
+    <li>Euler semi-implícito (simpléctico)</li>
+    <li>Heun</li>
+    <li>Runge-Kutta de orden 2 (RK2)</li>
+    <li>Runge-Kutta de orden 4 (RK4)</li>
+  </ul>
+  El usuario puede elegir el integrador y visualizar en tiempo real cómo afecta a la precisión, la energía total del sistema y la estabilidad de la simulación.
+</p>
+<p>
+  Se calcula también la energía total (cinética, gravitatoria y elástica) del sistema en cada paso de tiempo, y se representan gráficamente para analizar la conservación energética según el método utilizado. Además, se ha añadido interacción con el ratón para reposicionar la partícula, y con el teclado para controlar el integrador o resetear la simulación.
 </p>
 <iframe src="https://www.youtube.com/embed/VIDEO_ID_PRACTICA1" allowfullscreen></iframe>
+
 
 <h3>Práctica 2 – Fuente de agua con partículas</h3>
 <p>
