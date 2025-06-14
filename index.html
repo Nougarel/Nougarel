@@ -124,6 +124,42 @@
 </p>
 <iframe src="https://www.youtube.com/embed/VIDEO_ID_PRACTICA2" allowfullscreen></iframe>
 
+<h2>Prácticas</h2>
 
+<h3>Práctica 3 – Billar Francés (colisiones por velocidades)</h3>
+<p>
+  En esta simulación modelamos un sistema de partículas colisionantes que representan bolas de billar en una mesa sin troneras.
+  Cada partícula posee masa, posición, velocidad y un modelo de colisión basado en tres pasos: 
+  <strong>detectar la colisión</strong>, <strong>restituir la posición</strong> y <strong>calcular la velocidad tras el impacto</strong>.
+  <br><br>
+  Las colisiones se gestionan con una estrategia de “todas contra todas”, permitiendo observar cómo el coste computacional escala con el número de bolas (hasta 100).
+  Se implementan también:
+  <ul>
+    <li><strong>Rozamiento no lineal</strong>: proporcional al cuadrado de la velocidad.</li>
+    <li><strong>Pérdida de energía</strong>: en colisiones bola-banda y bola-bola, ajustada mediante coeficientes de restitución.</li>
+    <li><strong>Interacción con el ratón</strong>: se puede seleccionar y golpear una bola para observar el efecto físico.</li>
+    <li><strong>Fuerza de atracción</strong>: opcionalmente las bolas pueden ser atraídas a una esquina, forzando acumulaciones y aumentando colisiones.</li>
+  </ul>
+  Esta práctica permite entender cómo afectan la resolución de colisiones y el incremento de partículas a la estabilidad y eficiencia del sistema.
+</p>
+<iframe src="https://www.youtube.com/embed/VIDEO_ID_BILLAR" allowfullscreen></iframe>
+
+<h3>Práctica 3 – Simulación de fluido 2D (modelo de partículas con muelles)</h3>
+<p>
+  En esta simulación se modela un fluido bidimensional como un conjunto de partículas unidas entre sí mediante fuerzas tipo resorte (muelles), sin usar una malla estructurada fija.
+  El sistema sigue un enfoque de interacción por pares, donde cada partícula interactúa con sus vecinas más cercanas mediante:
+  <ul>
+    <li><strong>Fuerza de elasticidad</strong>: que actúa cuando la distancia entre partículas difiere de una longitud natural (muelle).</li>
+    <li><strong>Fuerza de amortiguamiento</strong>: proporcional a la diferencia de velocidad relativa entre partículas, estabiliza el sistema.</li>
+    <li><strong>Fuerza de presión</strong>: simula la compresibilidad del fluido y permite su expansión.</li>
+    <li><strong>Fuerza de viscosidad</strong>: suaviza las diferencias de velocidad para simular la fricción interna del fluido.</li>
+    <li><strong>Colisiones con paredes</strong>: se detectan y corrigen para mantener el fluido dentro de un dominio cuadrado.</li>
+  </ul>
+  No existe una malla explícita ni conexiones fijas: las relaciones se recalculan dinámicamente por proximidad, como ocurre en los métodos SPH (Smoothed Particle Hydrodynamics). Esto permite que la masa fluida conserve su cohesión, se deforme, rebote y vuelva a agruparse tras colisiones.
+  El resultado es una simulación visualmente realista de un fluido que se comporta como un gel viscoso o una masa líquida compacta.
+</p>
+<iframe src="https://www.youtube.com/embed/VIDEO_ID_FLUIDO" allowfullscreen></iframe>
+  
+  
 </body>
 </html>
