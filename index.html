@@ -9,8 +9,31 @@
   <h1>Portfolio Simulacion</h1>
 
   <h2>Tema 1</h2>
-  <h3>Nombre tema</h3>
-  <p>Este es un texto de ejemplo para explicar en detalle la simulación correspondiente al Tema 1. Aquí se describen los conceptos teóricos, implementación y comportamiento observado.</p>
+  <h3>Integradores numéricos y conceptos básicos</h3>
+  <p>
+    Este primer tema sienta las bases fundamentales de toda simulación física: se exploran conceptos esenciales de matemáticas y física, y se presentan las técnicas necesarias para resolver ecuaciones diferenciales ordinarias (EDOs) que rigen el comportamiento dinámico de los sistemas físicos. A partir de estas ideas, se implementan integradores numéricos que permiten avanzar el estado de los objetos en el tiempo.
+  </p>
+  <p>
+    En una simulación, los objetos se mueven según funciones matemáticas que describen su posición en función del tiempo. Por ello, se recurre a:
+    <ul>
+      <li>Vectores para representar posición, velocidad, aceleración y fuerzas.</li>
+      <li>Trigonometría y álgebra vectorial para calcular distancias, direcciones, magnitudes y ángulos.</li>
+      <li>Ecuaciones paramétricas como base de la animación.</li>
+    </ul>
+  </p>
+  <p>
+    La física entra en juego cuando se añaden fuerzas que modifican el estado del sistema. Según la segunda ley de Newton, F = ma, las fuerzas producen aceleración, que cambia la velocidad, y esta a su vez cambia la posición. Para simular este cambio a lo largo del tiempo, necesitamos integrar las ecuaciones de movimiento.
+  </p>
+  <p>
+    Como muchas EDO no tienen solución analítica, usamos métodos numéricos como el integrador de Euler. Este se basa en actualizar posición y velocidad usando pasos pequeños de tiempo. Si bien es simple, puede tener errores significativos si el paso de simulación es demasiado grande.
+  </p>
+  <p>
+    En este tema hemos implementado una simulación conocida como <strong>Bubble Shooter</strong>. Esta consiste en disparar una bola roja hacia burbujas estáticas. La dirección del disparo se calcula a partir del vector entre la bola y el ratón. El movimiento de la bola se actualiza en cada frame usando el método de Euler:
+  </p>
+  <pre><code>ballPos.add(PVector.mult(ballVel, SIM_STEP));</code></pre>
+  <p>
+    Esto nos permite observar cómo la bola avanza según la velocidad definida al disparar. En el vídeo, se muestran efectos de cambiar el valor de SIM_STEP, para ver cómo afecta la precisión de la simulación.
+  </p>
   <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe>
 
   <h2>Tema 2</h2>
@@ -22,26 +45,6 @@
   <h3>Nombre tema</h3>
   <p>Texto explicativo para el Tema 3. Incluirá la lógica de la implementación, parámetros utilizados y observaciones sobre el sistema simulado.</p>
   <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen></iframe>
-
-  <h2>Tema 4</h2>
-  <h3>Nombre tema</h3>
-  <p>Texto provisional para describir el Tema 4. Aquí se detallará la solución empleada, análisis del comportamiento y validación con teoría.</p>
-  <iframe src="https://www.youtube.com/embed/VIDEO_ID_4" allowfullscreen></iframe>
-
-  <h2>Tema 5</h2>
-  <h3>Nombre tema</h3>
-  <p>Descripción de ejemplo del Tema 5. Incluirá resultados visuales, análisis de rendimiento y discusión de mejoras posibles.</p>
-  <iframe src="https://www.youtube.com/embed/VIDEO_ID_5" allowfullscreen></iframe>
-
-  <h2>Tema 6</h2>
-  <h3>Nombre tema</h3>
-  <p>Explicación placeholder para el Tema 6. Servirá como guía para introducir el modelo simulado y sus resultados experimentales.</p>
-  <iframe src="https://www.youtube.com/embed/VIDEO_ID_6" allowfullscreen></iframe>
-
-  <h2>Tema 7</h2>
-  <h3>Nombre tema</h3>
-  <p>Texto inicial para el Tema 7. Describe la metodología utilizada, parámetros clave y su efecto sobre el resultado simulado.</p>
-  <iframe src="https://www.youtube.com/embed/VIDEO_ID_7" allowfullscreen></iframe>
 
 </body>
 </html>
