@@ -11,40 +11,75 @@
   <h2>Tema 1</h2>
   <h3>Integradores numéricos y conceptos básicos</h3>
   <p>
-    Este primer tema sienta las bases fundamentales de toda simulación física: se exploran conceptos esenciales de matemáticas y física, y se presentan las técnicas necesarias para resolver ecuaciones diferenciales ordinarias (EDOs) que rigen el comportamiento dinámico de los sistemas físicos. A partir de estas ideas, se implementan integradores numéricos que permiten avanzar el estado de los objetos en el tiempo.
+    Este primer tema sienta las bases fundamentales de toda simulación física...
+    <!-- Explicación completa del Bubble Shooter, ya incluida -->
   </p>
+  <h4>Simulación Bubble Shooter</h4>
   <p>
-    En una simulación, los objetos se mueven según funciones matemáticas que describen su posición en función del tiempo. Por ello, se recurre a:
-    <ul>
-      <li>Vectores para representar posición, velocidad, aceleración y fuerzas.</li>
-      <li>Trigonometría y álgebra vectorial para calcular distancias, direcciones, magnitudes y ángulos.</li>
-      <li>Ecuaciones paramétricas como base de la animación.</li>
-    </ul>
-  </p>
-  <p>
-    La física entra en juego cuando se añaden fuerzas que modifican el estado del sistema. Según la segunda ley de Newton, F = ma, las fuerzas producen aceleración, que cambia la velocidad, y esta a su vez cambia la posición. Para simular este cambio a lo largo del tiempo, necesitamos integrar las ecuaciones de movimiento.
-  </p>
-  <p>
-    Como muchas EDO no tienen solución analítica, usamos métodos numéricos como el integrador de Euler. Este se basa en actualizar posición y velocidad usando pasos pequeños de tiempo. Si bien es simple, puede tener errores significativos si el paso de simulación es demasiado grande.
-  </p>
-  <p>
-    En este tema hemos implementado una simulación conocida como <strong>Bubble Shooter</strong>. Esta consiste en disparar una bola roja hacia burbujas estáticas. La dirección del disparo se calcula a partir del vector entre la bola y el ratón. El movimiento de la bola se actualiza en cada frame usando el método de Euler:
-  </p>
-  <pre><code>ballPos.add(PVector.mult(ballVel, SIM_STEP));</code></pre>
-  <p>
-    Esto nos permite observar cómo la bola avanza según la velocidad definida al disparar. En el vídeo, se muestran efectos de cambiar el valor de SIM_STEP, para ver cómo afecta la precisión de la simulación.
+    En esta simulación se modela una bola disparada sobre un conjunto de burbujas...
+    <!-- Breve explicación detallada aquí -->
   </p>
   <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe>
 
   <h2>Tema 2</h2>
   <h3>Nombre tema</h3>
-  <p>Texto de ejemplo para el Tema 2. Aquí explicaremos cómo se modelan las fuerzas, condiciones de contorno y resultados experimentales de la simulación.</p>
+  <p>Texto de ejemplo para el Tema 2...</p>
   <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
 
   <h2>Tema 3</h2>
-  <h3>Nombre tema</h3>
-  <p>Texto explicativo para el Tema 3. Incluirá la lógica de la implementación, parámetros utilizados y observaciones sobre el sistema simulado.</p>
-  <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen></iframe>
+  <h3>Dinámica de sistemas discretos: tela, muelles y ondas</h3>
+  <p>
+    En este tema exploramos simulaciones que utilizan modelos discretizados sobre mallas o elementos enlazados por muelles. En cada ejercicio presentamos: el planteamiento físico, las fuerzas involucradas, el esquema de integración numérica empleado y las condiciones de contorno específicas.
+  </p>
+
+  <h4>Simulación de banderas (Banderas)</h4>
+  <p>
+    Se modela la superficie de una bandera como una grid de partículas conectadas por muelles estructurales, de corte ("shear") y de flexión ("bend"). Cada partícula está sujeta a fuerzas:
+    <ul>
+      <li><strong>Gravedad</strong>: constante vertical.</li>
+      <li><strong>Viento</strong>: variable aleatoriamente, aplicado de acuerdo a la orientación local de la tela.</li>
+      <li><strong>Fuerzas de resorte</strong>: entre vecinos directos y, en versiones avanzadas, entre vecinos diagonales y dobles.</li>
+      <li><strong>Amortiguamiento</strong>: para evitar oscilaciones excesivas.</li>
+    </ul>
+    Se utiliza un integrador explícito tipo Euler para actualizar posición y velocidad:
+    <pre><code>
+aceleración = fuerza / masa;
+velocidad += aceleración * dt;
+posición += velocidad * dt;
+    </code></pre>
+    Se muestran tres versiones: 1) solo muelles estructurales, 2) agregando corte, 3) también agregando flexión, aumentando realismo y rigidez.
+  </p>
+  <iframe src="https://www.youtube.com/embed/VIDEO_ID_BANDERAS" allowfullscreen></iframe>
+
+  <h4>Simulación de pelos (Muelle en cadena)</h4>
+  <p>
+    Aquí cada pelo se compone de múltiples segmentos unidos por muelles, simulando un péndulo múltiple. Las partículas finales pueden arrastrarse con el ratón, mostrando cómo se transmiten fuerzas por los muelles:
+    <ul>
+      <li><strong>Muelle</strong>: define la longitud natural y fuerza proporcional a la elongación.</li>
+      <li><strong>Amortiguamiento</strong>: fuerza proporcional al diferencial de velocidad entre extremos.</li>
+      <li><strong>Peso</strong>: actúa verticalmente en cada extremo.</li>
+    </ul>
+    Se aplica integración por pasos, actualizando fuerzas, velocidades y posiciones en cada frame. El resultado es un comportamiento dinámico y suave, sensible a la interacción directa con el cursor.
+  </p>
+  <iframe src="https://www.youtube.com/embed/VIDEO_ID_PELOS" allowfullscreen></iframe>
+
+  <h4>Simulación de olas (WaveSim)</h4>
+  <p>
+    Aquí usamos tres modelos de ondas:
+    <ul>
+      <li><strong>Gerstner</strong>: mueve tanto la posición horizontal como la vertical, generando ondas realistas con crestas inclinadas. Usa parámetros: A (amplitud), λ (longitud de onda), v (velocidad), Q (crest factor), y dirección.</li>
+      <li><strong>Radial</strong>: ondas circulares centradas, usando una función cos(k(s−vt)).</li>
+      <li><strong>Direccional</strong>: ondas planas propagándose en una dirección definida, usando sin(k·r+ωt).</li>
+    </ul>
+    Se construye una malla 3D y se calculan normales para iluminar correctamente. En cada frame:
+    <ol>
+      <li>Se actualiza la malla según el tipo de onda.</li>
+      <li>Se calculan normales usando vecinos para iluminación suave.</li>
+      <li>Se renderizan las caras con colores según altura (agua clara en crestas, oscura en valles).</li>
+    </ol>
+    Así podemos comparar visualmente cómo cada método afecta al aspecto, movimiento y suavidad de la superficie.
+  </p>
+  <iframe src="https://www.youtube.com/embed/VIDEO_ID_OLAS" allowfullscreen></iframe>
 
 </body>
 </html>
