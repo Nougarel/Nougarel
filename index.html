@@ -12,12 +12,10 @@
   <h3>Integradores numéricos y conceptos básicos</h3>
   <p>
     Este primer tema sienta las bases fundamentales de toda simulación física...
-    <!-- Explicación completa del Bubble Shooter, ya incluida -->
   </p>
   <h4>Simulación Bubble Shooter</h4>
   <p>
     En esta simulación se modela una bola disparada sobre un conjunto de burbujas...
-    <!-- Breve explicación detallada aquí -->
   </p>
   <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe>
 
@@ -53,13 +51,7 @@ posición += velocidad * dt;
 
   <h4>Simulación de pelos (Muelle en cadena)</h4>
   <p>
-    Aquí cada pelo se compone de múltiples segmentos unidos por muelles, simulando un péndulo múltiple. Las partículas finales pueden arrastrarse con el ratón, mostrando cómo se transmiten fuerzas por los muelles:
-    <ul>
-      <li><strong>Muelle</strong>: define la longitud natural y fuerza proporcional a la elongación.</li>
-      <li><strong>Amortiguamiento</strong>: fuerza proporcional al diferencial de velocidad entre extremos.</li>
-      <li><strong>Peso</strong>: actúa verticalmente en cada extremo.</li>
-    </ul>
-    Se aplica integración por pasos, actualizando fuerzas, velocidades y posiciones en cada frame. El resultado es un comportamiento dinámico y suave, sensible a la interacción directa con el cursor.
+    Aquí cada pelo se compone de múltiples segmentos unidos por muelles, simulando un péndulo múltiple...
   </p>
   <iframe src="https://www.youtube.com/embed/VIDEO_ID_PELOS" allowfullscreen></iframe>
 
@@ -67,19 +59,29 @@ posición += velocidad * dt;
   <p>
     Aquí usamos tres modelos de ondas:
     <ul>
-      <li><strong>Gerstner</strong>: mueve tanto la posición horizontal como la vertical, generando ondas realistas con crestas inclinadas. Usa parámetros: A (amplitud), λ (longitud de onda), v (velocidad), Q (crest factor), y dirección.</li>
-      <li><strong>Radial</strong>: ondas circulares centradas, usando una función cos(k(s−vt)).</li>
-      <li><strong>Direccional</strong>: ondas planas propagándose en una dirección definida, usando sin(k·r+ωt).</li>
+      <li><strong>Gerstner</strong>: mueve tanto la posición horizontal como la vertical...</li>
+      <li><strong>Radial</strong>: ondas circulares centradas...</li>
+      <li><strong>Direccional</strong>: ondas planas propagándose en una dirección definida...</li>
     </ul>
-    Se construye una malla 3D y se calculan normales para iluminar correctamente. En cada frame:
-    <ol>
-      <li>Se actualiza la malla según el tipo de onda.</li>
-      <li>Se calculan normales usando vecinos para iluminación suave.</li>
-      <li>Se renderizan las caras con colores según altura (agua clara en crestas, oscura en valles).</li>
-    </ol>
-    Así podemos comparar visualmente cómo cada método afecta al aspecto, movimiento y suavidad de la superficie.
   </p>
   <iframe src="https://www.youtube.com/embed/VIDEO_ID_OLAS" allowfullscreen></iframe>
+
+  <h4>Simulación de malla sobre esfera (Cloth Sphere)</h4>
+  <p>
+    Esta simulación representa una tela suspendida sobre una esfera, afectada por la gravedad y restringida por colisiones tanto con el plano del suelo como con la esfera. Se trata de un modelo físico de malla estructurada con resortes (muelles) entre partículas:
+    <ul>
+      <li><strong>Gravedad</strong>: actúa sobre todas las masas no fijas.</li>
+      <li><strong>Resortes estructurales</strong>: unen cada partícula a sus vecinos.</li>
+      <li><strong>Resolución de colisiones</strong>: evita que las partículas penetren la esfera o el suelo, reajustando su posición si lo hacen.</li>
+    </ul>
+    La integración se hace por el método de Verlet modificado, sumando directamente aceleraciones a posiciones:
+    <pre><code>
+aceleración = fuerza / masa;
+posición += aceleración * dt²;
+    </code></pre>
+    Visualmente, se puede observar cómo la malla cae, se adapta al contorno de la esfera y reposa de forma estable. Esta simulación es una representación extendida de los modelos de tela aplicados a colisiones en 3D.
+  </p>
+  <iframe src="https://www.youtube.com/embed/VIDEO_ID_MALLA_ESFERA" allowfullscreen></iframe>
 
 </body>
 </html>
